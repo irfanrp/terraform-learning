@@ -18,10 +18,13 @@ pipeline {
                 // sh 'aws --version'
 
                 // Configure AWS CLI
-                 withCredentials([awsAccessKey(credentialsId: 'aws-credentials', variable: 'AWS_ACCESS_KEY_ID'),
-                                 awsSecretKey(credentialsId: 'aws-credentials', variable: 'AWS_SECRET_ACCESS_KEY')]) {
-                    sh 'aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID'
-                    sh 'aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY'
+                withAWS(credentials: 'aws-credentials') {
+                            sh "aws --version"  
+                            sh "aws sts get-caller-identity"
+
+
+                            
+                    }
                 }
             }
         }
