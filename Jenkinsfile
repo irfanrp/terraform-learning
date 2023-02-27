@@ -11,7 +11,9 @@ pipeline {
                 // Install AWS CLI
                 sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
                 sh 'unzip awscliv2.zip'
-                sh  './aws/install'
+                sh 'mkdir -p $HOME/.local/bin'
+                sh './aws/install --bin-dir $HOME/.local/bin --install-dir $HOME/.local/aws-cli'
+
 
                 // Configure AWS CLI
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
