@@ -9,11 +9,13 @@ pipeline {
         stage('Install and configure AWS CLI') {
             steps {
                 // Configure AWS CLI
-                            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding',credentialsId: 'aws',accessKeyVariable: 'AWS_ACCESS_KEY_ID',secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding',credentialsId: 'aws',accessKeyVariable: 'AWS_ACCESS_KEY_ID',secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) {
                 sh "aws --version"  
                 sh "aws sts get-caller-identity"
+                sh "sh aws s3 ls"
             }
+
 
             }
         }
