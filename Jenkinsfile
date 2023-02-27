@@ -13,7 +13,7 @@ pipeline {
             ]]) {
                 sh "aws --version"  
                 sh "aws sts get-caller-identity"
-                sh "sh aws s3 ls"
+                sh "aws s3 ls"
             }
 
 
