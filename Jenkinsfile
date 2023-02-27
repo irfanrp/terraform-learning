@@ -8,9 +8,6 @@ pipeline {
     stages {
         stage('Install and configure AWS CLI') {
             steps {
-                // Install AWS CLI
-                sh 'pip3 install awscli --upgrade --user'
-
                 // Configure AWS CLI
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-credentials', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                     sh 'aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID'
