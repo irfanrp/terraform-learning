@@ -26,6 +26,17 @@ pipeline {
             }
         }
 
+        stage('apply') {
+            input {
+                message 'Are you sure you want to apply the Terraform changes?'
+                ok 'Yes'
+                submitter 'deployer'
+            }
+            steps {
+                sh "terraform apply -auto-approve"
+            }
+        }
+
         // Add your other stages here
     }
 }
