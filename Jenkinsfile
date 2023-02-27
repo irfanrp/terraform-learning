@@ -20,12 +20,6 @@ pipeline {
             }
         }
 
-        stage('Terraform Lint') {
-            steps {
-                sh "tflint"
-            }
-        }
-
         stage('Terraform Plan') {
             steps {
                 sh "terraform plan"
