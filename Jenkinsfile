@@ -9,10 +9,12 @@ pipeline {
         stage('Install and configure AWS CLI') {
             steps {
                 // Configure AWS CLI
-                withAWS(region: 'us-east-1', credentials: 'aws'){
-                    sh "aws --version"  
-                    sh "aws sts get-caller-identity"
-                }
+                            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding',credentialsId: 'aws',accessKeyVariable: 'AWS_ACCESS_KEY_ID',secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+            ]]) {
+                sh "aws --version"  
+                sh "aws sts get-caller-identity"
+            }
+
             }
         }
 
