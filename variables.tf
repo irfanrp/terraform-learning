@@ -8,7 +8,6 @@ variable "ec2_bastion_security_group" {
 
 }
 
-
 variable "vpc" {
   description = "VPC id where the load balancer and other resources will be deployed."
   type        = any
