@@ -20,13 +20,19 @@ pipeline {
             }
         }
 
-        stage('plan') {
+        stage('Terraform Lint') {
+            steps {
+                sh "tflint"
+            }
+        }
+
+        stage('Terraform Plan') {
             steps {
                 sh "terraform plan"
             }
         }
 
-        stage('apply') {
+        stage('Terraform Apply') {
             input {
                 message 'Are you sure you want to apply the Terraform changes?'
                 ok 'Yes'
