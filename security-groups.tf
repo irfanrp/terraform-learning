@@ -1,6 +1,5 @@
 module "ec2_bastion_security_group" {
   source = "terraform-aws-modules/security-group/aws"
-  version = "4.17.0"
 
   name        = var.ec2_bastion_security_group["name"]
   description = var.ec2_bastion_security_group["description"]
