@@ -9,7 +9,7 @@ pipeline {
         stage('Install and configure AWS CLI') {
             steps {
                 // Configure AWS CLI
-                withAWS(credentials: 'aws-credentials') {
+                withAWS(credentials: 'aws') {
                     sh "aws --version"  
                     sh "aws sts get-caller-identity"
                 }
