@@ -9,8 +9,7 @@ pipeline {
         stage('Install and configure AWS CLI') {
             steps {
                 // Configure AWS CLI
-            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding',credentialsId: 'aws',accessKeyVariable: 'AWS_ACCESS_KEY_ID',secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-            ]]) {
+            withAWS(credentials: 'aws'){
                 sh "aws --version"  
                 sh "aws sts get-caller-identity"
                 sh "aws s3 ls"
@@ -22,7 +21,7 @@ pipeline {
 
         stage('terraform init') {
             steps {
-                sh "terraform init"
+                sh "terraform init" 
             }
         }
 
