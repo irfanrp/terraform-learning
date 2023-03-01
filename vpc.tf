@@ -9,7 +9,7 @@ module "vpc" {
   public_subnets  = var.vpc["public_subnet_cidr"]
 
   enable_nat_gateway = var.vpc["enable_nat_gateway"]
-  enable_vpn_gateway = var.voc["enable_vpn_gateway"]
+  enable_vpn_gateway = var.vpc["enable_vpn_gateway"]
 
   tags = {
     Terraform   = "true"
