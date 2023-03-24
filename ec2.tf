@@ -9,6 +9,7 @@ module "ec2-bastion" {
   subnet_id              = module.vpc.public_subnets[0]
   key_name               = "terraform"
 
+    
   tags = {
     Terraform   = "true"
     Environment = "dev"
